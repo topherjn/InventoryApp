@@ -55,6 +55,10 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         return true
     }
 
+    fun retrieveItem(id: Int): LiveData<Item> {
+        return itemDao.getItem(id).asLiveData()
+    }
+
     /**
      * Returns an instance of the [Item] entity class with the item info entered by the user.
      * This will be used to add a new entry to the Inventory database.
@@ -67,6 +71,8 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         )
     }
 }
+
+
 
 /**
  * Factory class to instantiate the [ViewModel] instance.
