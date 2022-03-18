@@ -17,6 +17,7 @@
 package com.example.inventory
 
 import androidx.lifecycle.*
+import androidx.navigation.Navigation.findNavController
 import com.example.inventory.data.Item
 import com.example.inventory.data.ItemDao
 import kotlinx.coroutines.launch
@@ -73,7 +74,15 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         }
     }
 
+    fun isStockAvailable(item: Item): Boolean {
+        return (item.quantityInStock > 0)
+    }
 
+    fun deleteItem(item: Item) {
+        viewModelScope.launch {
+            itemDao.delete(item)
+        }
+    }
 
     /**
      * Returns an instance of the [Item] entity class with the item info entered by the user.
