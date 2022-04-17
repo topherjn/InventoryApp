@@ -14,5 +14,7 @@ data class Site (
     @ColumnInfo(name="arrondissement")
     val arrondissement: Int,
     @ColumnInfo(name="uri")
-    val uri: String
+    val uri: String,
+    @ColumnInfo(name="imgPath")
+    val imgPath: String
     )
